@@ -37,7 +37,7 @@ namespace Infinite_World
         }
         public Player(World world)
         {
-            rect = new RectangleShape(new Vector2f(Tile.TILE_SIZE * 1.5f, Tile.TILE_SIZE * 2.8f));
+            rect = new RectangleShape(new Vector2f(Tile.TILE_SIZE_X * 1.5f, Tile.TILE_SIZE_Y * 2.8f));
             rect.Origin = new Vector2f(rect.Size.X / 2, 0);
 
             rectDirection = new RectangleShape(new Vector2f(50, 3));
@@ -94,20 +94,23 @@ namespace Infinite_World
 
             velocity += new Vector2f(0, 0.15f);
 
-            int pX = (int)((Position.X - rect.Origin.X + rect.Size.X / 2) / Tile.TILE_SIZE);
-            int pY = (int)((Position.Y + rect.Size.Y) / Tile.TILE_SIZE);
+            int pX = (int)((Position.X - rect.Origin.X + rect.Size.X / 2) / Tile.TILE_SIZE_X);
+            int pY = (int)((Position.Y + rect.Size.Y) / Tile.TILE_SIZE_Y);
 
             Tile tile = world.GetTile(pX, pY); //Verificam textura
             if(tile != null)
             {
                 Vector2f nextPos = Position + velocity - rect.Origin;
                 FloatRect playerRect = new FloatRect(nextPos, rect.Size);
-                FloatRect tileRect = new FloatRect(tile.Position, new Vector2f(Tile.TILE_SIZE, Tile.TILE_SIZE));
+                FloatRect tileRect = new FloatRect(tile.Position, new Vector2f(Tile.TILE_SIZE_X, Tile.TILE_SIZE_Y));
 
                 isFall = !playerRect.Intersects(tileRect);
             }
 
             if (isFall)
+            {
+                velocity.Y = 2;
+            }else
             {
                 velocity.Y = 0;
             }

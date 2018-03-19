@@ -15,6 +15,7 @@ namespace Infinite_World
         {
             //Crearea lumei noi
             world = new World();
+            world.GenerateWorld();
 
             //Crearea jucatorului
             player = new Player(world);

@@ -13,7 +13,7 @@
 
             //Crearea jucatorului
             player = new Player(world);
-            player.StartPosition = new SFML.System.Vector2f(50, 150);
+            player.StartPosition = new SFML.System.Vector2f(150, 10);
             player.Spawn();
 
             DebugRander.Enable = true;  

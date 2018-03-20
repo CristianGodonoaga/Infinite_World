@@ -67,7 +67,7 @@ namespace Infinite_World
                     rectShape.Texture = Content.texTile2;
                     break;
             }
-            rectShape.TextureRect = GetTextureRect(1, 1);
+            rectShape.TextureRect = GetTextureRect(1, 1);////////////////
 
             // Updates aspect of the tile in dependence on neighbors
             UpdateView();

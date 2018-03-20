@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 using SFML.System;
 /// <summary>
 /// Сlass World is responsible for all the logic and drawing of the world
@@ -28,12 +24,18 @@ namespace Infinite_World
         //Generate new World
         public void GenerateWorld()
         {
-            for (int x = 0; x < Chunk.CHUNK_SIZE; x++)
-                for (int y = 20; y < 21; y++)
-                    SetTile(TileType.GROUND, x, y);
-            for (int x = Chunk.CHUNK_SIZE; x < Chunk.CHUNK_SIZE * 2; x++)
-                for (int y = 20; y < 21; y++)
+            for (int x = 0; x < 50; x++)
+                for (int y = 15; y <= 17; y++)
                     SetTile(TileType.GRASS, x, y);
+            for (int x = 0; x < 50; x++)
+                for (int y = 18; y <= 32; y++)
+                    SetTile(TileType.GROUND, x, y);
+            for (int x = 0; x < 1; x++)
+                for (int y = 0; y <= 32; y++)
+                    SetTile(TileType.GROUND, x, y);
+            for (int x = 49; x < 50; x++)
+                for (int y = 0; y <= 32; y++)
+                    SetTile(TileType.GROUND, x, y);
         }
 
         public void SetTile(TileType type, int x, int y)
@@ -64,11 +66,12 @@ namespace Infinite_World
         {
             int X = x / Chunk.CHUNK_SIZE;
             int Y = y / Chunk.CHUNK_SIZE;
+            // @todo: Daca Player-ul poate ajunge in chank-ul -1 e problema
+            if (X >= WORLD_SIZE || Y >= WORLD_SIZE)
+                return null;
 
             if(chunks[X][Y] == null)
-            {
                 chunks[X][Y] = new Chunk(new Vector2i(X, Y));
-            }
 
             return chunks[X][Y];
         }

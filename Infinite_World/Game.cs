@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-
-namespace Infinite_World
+﻿namespace Infinite_World
 {
     class Game
     {
@@ -19,10 +13,12 @@ namespace Infinite_World
 
             //Crearea jucatorului
             player = new Player(world);
-            player.StartPosition = new SFML.System.Vector2f(300, 150);
+            player.StartPosition = new SFML.System.Vector2f(50, 150);
             player.Spawn();
+
+            DebugRander.Enable = true;  
         }
-        //Refrash la logica
+        //Refrash la logica (fizica)
         public void Update()
         {
             player.Update();
@@ -31,8 +27,9 @@ namespace Infinite_World
         //Desenarea jocului
         public void Drow()
         {
-            Program.Window.Draw(world);
-            Program.Window.Draw(player);
+            Program.Window.Draw(world);// Draw World
+            Program.Window.Draw(player);// Draw Player
+            DebugRander.Draw(Program.Window);
         }
     }
 }

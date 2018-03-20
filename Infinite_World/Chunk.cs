@@ -37,7 +37,7 @@ namespace Infinite_World
         {
 
             tiles[x][y] = new Tile(type, upTile, downTile, leftTile, rightTile);
-            tiles[x][y].Position = new Vector2f(x * Tile.TILE_SIZE_X, y * Tile.TILE_SIZE_Y);
+            tiles[x][y].Position = new Vector2f(x * Tile.TILE_SIZE_X, y * Tile.TILE_SIZE_Y) + Position;
         }
 
         // Get Tile of the Chunk
@@ -53,8 +53,6 @@ namespace Infinite_World
         // Draw all tailes inside of Chunk
         public void Draw(RenderTarget target, RenderStates states)
         {
-            states.Transform *= Transform; // Desenarea relativ obiectului parinte
-
             // Drow tail
             for (int x = 0; x < CHUNK_SIZE; x++)
             {
@@ -62,7 +60,7 @@ namespace Infinite_World
                 {
                     if (tiles[x][y] == null) // Daca nu a
                         continue;
-                    target.Draw(tiles[x][y], states);
+                    target.Draw(tiles[x][y]);
                 }
             }
         }

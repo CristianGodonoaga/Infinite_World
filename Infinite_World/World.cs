@@ -67,7 +67,7 @@ namespace Infinite_World
             int X = x / Chunk.CHUNK_SIZE;
             int Y = y / Chunk.CHUNK_SIZE;
             // @todo: Daca Player-ul poate ajunge in chank-ul -1 e problema
-            if (X >= WORLD_SIZE || Y >= WORLD_SIZE)
+            if (X >= WORLD_SIZE || Y >= WORLD_SIZE || X < 0 || Y < 0)
                 return null;
 
             if(chunks[X][Y] == null)

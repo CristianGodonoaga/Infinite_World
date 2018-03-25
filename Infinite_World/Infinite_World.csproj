@@ -77,6 +77,7 @@
     <Compile Include="Content.cs" />
     <Compile Include="DebugRander.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="NPC\Entity.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

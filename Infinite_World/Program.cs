@@ -6,29 +6,31 @@ using Infinite_World;
 using SFML;
 using SFML.Graphics;
 using SFML.Window;
+using Infinite_World.Views;
 
 namespace Infinite_World
 {
     class Program
     {
         static RenderWindow win;
+        //Menu menu;
 
-        public static RenderWindow Window { get { return win; } }
+        //public static RenderWindow Window { get { return win; } }
         public static Game Game { private set; get; }
 
         static void Main(string[] args)
         {
-            win = new RenderWindow(new SFML.Window.VideoMode(800, 600), "Infinite World");
+            //win = new RenderWindow(new SFML.Window.VideoMode(800, 600), "Infinite World");
             //win = new RenderWindow(new VideoMode(800, 600), "Infinite World", Styles.Titlebar, new ContextSettings());
-            win.SetVerticalSyncEnabled(true);
+            //win.SetVerticalSyncEnabled(true);
 
             #region SetControls
-            win.Closed += Win_Closed; //Metoda la inchiderea win
-            win.Resized += Win_Resized; //Metoda la redemensionarea win
+            //win.Closed += Win_Closed; //Metoda la inchiderea win
+            //win.Resized += Win_Resized; //Metoda la redemensionarea win
             //win.GainedFocus += Win_GainedFocus;
             //win.LostFocus += Win_LostFocus;
             //win.KeyPressed += Win_KeyPressed;
-            win.KeyReleased += Win_KeyReleased;
+            //win.KeyReleased += Win_KeyReleased;
             //win.MouseButtonPressed += Win_MouseButtonPressed;
             //win.MouseButtonReleased += Win_MouseButtonReleassed;
             //win.MouseMoved += Win_MouseMoved;
@@ -38,7 +40,8 @@ namespace Infinite_World
             //win.SetFramerateLimit(60);
             #endregion
             Content.Load();//Load content "resurse"
-
+            new Menu();
+            /*
             Game = new Game();
             while (win.IsOpen)
             {
@@ -52,6 +55,7 @@ namespace Infinite_World
 
                 win.Display();
             }
+            */
         }
 
         private static void Win_Resized(object sender, SizeEventArgs e)

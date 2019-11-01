@@ -1,6 +1,9 @@
-﻿namespace Infinite_World
+﻿using Infinite_World.Views;
+using SFML.Graphics;
+
+namespace Infinite_World
 {
-    class Game
+    class Game : BaseWindow
     {
         World world; //Lumea
         Player player; //Jucator
@@ -27,9 +30,24 @@
         //Desenarea jocului
         public void Drow()
         {
-            Program.Window.Draw(world);// Draw World
-            Program.Window.Draw(player);// Draw Player
-            DebugRander.Draw(Program.Window);
+            Window.Draw(world);// Draw World
+            Window.Draw(player);// Draw Player
+            DebugRander.Draw(Window);
+        }
+        public void Start()
+        {
+            while (Window.IsOpen)
+            {
+                Window.DispatchEvents(); //Check input window msg
+                this.Update();
+
+                Window.Clear(Color.Black);
+
+                //Desenarea
+                this.Drow();
+
+                Window.Display();
+            }
         }
     }
 }

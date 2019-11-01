@@ -1,6 +1,8 @@
 ﻿using System;
 using SFML.Graphics;
 using SFML.System;
+using Infinite_World.Views;
+using Infinite_World;
 
 namespace Infinite_World.NPC
 {
@@ -52,7 +54,7 @@ namespace Infinite_World.NPC
             Position += movement + velocity;
 
             //daca cade
-            if (Position.Y > Program.Window.Size.Y)
+            if (Position.Y > 400) // !!!!!!!!!
                 OnKill();
         }
 
